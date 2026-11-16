@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
+# Configures a new Ubuntu machine with nginx and a custom X-Served-By header
 
-apt-get update
-apt-get install -y nginx
+sudo apt-get update -y
+sudo apt-get install -y nginx
 
-sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By \$hostname always;/" /etc/nginx/sites-available/default
+echo "Holberton School for the win!" | sudo tee /var/www/html/index.html > /dev/null
 
-nginx -t
-service nginx restart
+# Add the header only once
+if ! grep -q "X-Served-By" /etc/nginx/sites-available/default; then
+    sudo sed -i "/server_name _;/a\\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
+fi
+
+sudo nginx -t
+sudo service nginx restart
