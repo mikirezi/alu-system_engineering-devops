@@ -3,78 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>404 - Ceci n'est pas une page</title>
+<title>404 - Page not found</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    color: #fff;
-    text-align: center;
-    background: linear-gradient(135deg, #1e1b4b, #4c1d95, #be185d);
-    background-size: 300% 300%;
-    animation: shift 12s ease infinite;
-    overflow: hidden;
-  }
-  @keyframes shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  .box { padding: 2rem; }
-  h1 {
-    font-size: clamp(6rem, 25vw, 14rem);
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    line-height: 1;
-    animation: float 4s ease-in-out infinite;
-    text-shadow: 0 10px 40px rgba(0,0,0,0.4);
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-18px); }
-  }
-  h2 { font-size: 1.6rem; font-weight: 400; margin: 1rem 0 0.5rem; font-style: italic; }
-  p { opacity: 0.8; margin-bottom: 2rem; }
-  a {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    border-radius: 999px;
-    background: #fff;
-    color: #4c1d95;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  a:hover { transform: scale(1.08); box-shadow: 0 8px 25px rgba(0,0,0,0.35); }
-  .dot {
-    position: absolute;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-    animation: rise linear infinite;
-  }
-  @keyframes rise {
-    from { transform: translateY(105vh); }
-    to { transform: translateY(-10vh); }
-  }
-  .dot:nth-child(1) { left: 10%; animation-duration: 9s; }
-  .dot:nth-child(2) { left: 30%; animation-duration: 13s; width: 20px; height: 20px; }
-  .dot:nth-child(3) { left: 55%; animation-duration: 8s; }
-  .dot:nth-child(4) { left: 75%; animation-duration: 11s; width: 16px; height: 16px; }
-  .dot:nth-child(5) { left: 90%; animation-duration: 15s; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center;
+         justify-content: center; font-family: Georgia, serif; color: #fff;
+         background: linear-gradient(135deg, #1e3c72, #2a5298, #7e57c2); }
+  .box { text-align: center; padding: 2rem; }
+  h1 { font-size: 8rem; margin: 0; letter-spacing: 0.5rem; }
+  p { font-size: 1.6rem; font-style: italic; }
+  a { display: inline-block; margin-top: 1rem; padding: 0.7rem 1.6rem;
+      border-radius: 2rem; background: #fff; color: #2a5298;
+      text-decoration: none; font-family: Arial, sans-serif; }
+  a:hover { background: #ffd54f; }
 </style>
 </head>
 <body>
-  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-  <span class="dot"></span><span class="dot"></span>
   <div class="box">
     <h1>404</h1>
-    <h2>Ceci n'est pas une page</h2>
-    <p>The page you are looking for drifted away into the void.</p>
+    <p>Ceci n'est pas une page</p>
     <a href="/">Take me home</a>
   </div>
 </body>

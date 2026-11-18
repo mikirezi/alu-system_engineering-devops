@@ -1,34 +1,30 @@
 #!/usr/bin/env bash
-# Installs nginx, adds the 301 redirect, and a custom 404 page
-
+# Installs nginx with a 301 redirect and a custom 404 page
 sudo apt-get update -y
 sudo apt-get install -y nginx
-
 echo "Holberton School for the win!" | sudo tee /var/www/html/index.html > /dev/null
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
-
-sudo tee /etc/nginx/sites-available/default > /dev/null << 'NGX'
+sudo tee /etc/nginx/sites-available/default > /dev/null <<'CFG'
 server {
-listen 80 default_server;
-listen [::]:80 default_server;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm;
+    server_name _;
+    add_header X-Served-By $hostname;
 
-root /var/www/html;
-index index.html index.htm index.nginx-debian.html;
-server_name _;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
 
-location / {
-try_files $uri $uri/ =404;
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
 }
-
-location /redirect_me {
-return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-}
-
-error_page 404 /404.html;
-location = /404.html {
-internal;
-}
-}
-NGX
-
+CFG
 sudo service nginx restart
